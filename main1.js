@@ -3,7 +3,7 @@ status="";
 
 function preload()
 {
-    img= loadImage('bed.jpg');
+    img= loadImage("bed.jpg")
 }
 
 function setup()
