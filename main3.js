@@ -1,25 +1,25 @@
-img = "";
-objects = [];
-status = "";
+img="";
+objects=[];
+status="";
 
 function preload()
 {
-  img = loadImage('bed.jpg');
+  img=loadImage('wb.jpg');
 }
 
 function setup() 
 {
-  canvas = createCanvas(640, 420);
+  canvas=createCanvas(640, 420);
   canvas.center();
-  objectDetector = ml5.objectDetector('cocossd', modelLoaded);
-  document.getElementById("status").innerHTML = "Status : Detecting Objects";
+  objectDetector=ml5.objectDetector('cocossd', modelLoaded);
+  document.getElementById("status").innerHTML="Status : Detecting Objects";
 }
 
 function modelLoaded() 
 {
-  console.log("model is loaded")
-  status = true;
-  objectDetector.detect(img, gotResult);
+  console.log("Model Loaded!")
+  status=true;
+  objectDetector.detect(img,gotResult);
 }
 
 function gotResult(error, results) 
@@ -28,9 +28,8 @@ function gotResult(error, results)
     console.log(error);
   }
   console.log(results);
-  objects = results;
+  objects=results;
 }
-
 
 function draw() 
 {
@@ -40,10 +39,10 @@ function draw()
       document.getElementById("status").innerHTML = "Status : Objects Detected";
 
       fill(255, 0, 0);
-      percent = floor(objects[i].confidence * 100);
+      percent=floor(objects[i].confidence * 100);
       text(objects[i].label + " " + percent + "%", objects[i].x + 5, objects[i].y + 15);
       noFill();
-      stroke();
+      stroke(255, 0, 0);
       rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
     }
   }

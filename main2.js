@@ -4,7 +4,7 @@ status = "";
 
 function preload()
 {
-  img = loadImage('bed.jpg');
+  img = loadImage('deskimg.jpg');
 }
 
 function setup() 
@@ -17,12 +17,12 @@ function setup()
 
 function modelLoaded() 
 {
-  console.log("model is loaded")
+  console.log("Model Loaded!")
   status = true;
   objectDetector.detect(img, gotResult);
 }
 
-function gotResult(error, results) 
+function gotResult(error, results)
 {
   if (error) {
     console.log(error);
@@ -43,7 +43,7 @@ function draw()
       percent = floor(objects[i].confidence * 100);
       text(objects[i].label + " " + percent + "%", objects[i].x + 5, objects[i].y + 15);
       noFill();
-      stroke();
+      stroke(255, 0, 0);
       rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
     }
   }
